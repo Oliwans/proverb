@@ -1,29 +1,12 @@
 const Koa = require('koa');
-const { Sequelize } = require('sequelize');
-const db = require('./config')
-
-var sequelize = new Sequelize(db.database, db.user, db.password, {
-    port:db.port,
-    host: db.host,
-    dialect: 'postgres',
-    dialectOptions: {
-        dateStrings: true,
-        typeCast: true
-    },
-    pool: {
-        max: 20,
-        min: 1,
-        acquire: 60000,
-        idle: 10000
-    },
-    timezone: '+08:00' //东八时区
-});
-try {
-    sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-} catch (error) {
-    console.error('Unable to connect to the database:', error);
-}
+const Redis = require('ioredis');
+const redis = new Redis({
+    port: 6379, // Redis port
+    host: "127.0.0.1", // Redis host
+    family: 4, // 4 (IPv4) or 6 (IPv6)
+    // password: "auth",
+    db: 0,
+})
 const bodyParser = require('koa-bodyparser');
 
 const controller = require('./controller');
