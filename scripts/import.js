@@ -8,7 +8,7 @@ let idiom = model.idiom;
 //     let data = await idiom.findAll();
 //     console.log(data, 111)
 // })();
-function aa(num) {
+function createRowData(num) {
     idiom.create({
         derivation: jsonData[num].derivation,
         example: jsonData[num].example,
@@ -23,4 +23,4 @@ function aa(num) {
     })
 }
 
-aa(0)
+createRowData(0)

@@ -48,6 +48,7 @@ const idiom = sequelize.define('idiom', {
   }, {
     freezeTableName: true, // 设置为true时，sequelize不会改变表名，否则可能会按其规则有所调整
     timestamps: false,
+    autoIncrement: true
   })
 
   idiom.sync({
